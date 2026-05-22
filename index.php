@@ -48,6 +48,21 @@
             color: white;
             padding: 15px;
         }
+
+        /* Styling the team link so it blends beautifully */
+        .footer-link {
+            color: #ffc107;
+            /* Matches your warning yellow button for consistency */
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 15px;
+            transition: 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
     </style>
 
 </head>
@@ -202,11 +217,12 @@
     <!-- FOOTER -->
 
     <footer class="text-center mt-5">
-
-        RECTEM CBT Portal © <?php echo date("Y"); ?>
-
+        <div class="container d-flex flex-column flex-sm-row justify-content-center align-items-center">
+            <span>RECTEM CBT Portal © <?php echo date("Y"); ?></span>
+            <!-- Links directly to your upcoming team credits folder/file -->
+            <a href="about_team.php" class="footer-link">About the Team</a>
+        </div>
     </footer>
-
 
 </body>
 
