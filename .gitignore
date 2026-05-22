@@ -1,0 +1,6 @@
+# Ignore local environment database connections
+config/database.php
+
+# Ignore OS files
+Thumbs.db
+.DS_Store
