@@ -728,7 +728,7 @@
         <div class="footer-band">
             <p>
                 Developed with 💛 and teamwork &nbsp;·&nbsp; <span>RECTEM CBT Portal &copy; <?php echo date("Y"); ?></span><br>
-                Group Lead &amp; Developer: <span>Adejumo Abraham Opeoluwa</span> &nbsp;·&nbsp; Academic Final Year Project
+                Group Lead &amp; Developer: <span>Adejumo Abraham Opeoluwa</span> &nbsp;·&nbsp; Mandatory Skill Project
             </p>
         </div>
 
