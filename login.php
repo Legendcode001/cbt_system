@@ -6,50 +6,14 @@ $message = "";
 
 if (isset($_POST['login'])) {
 
-    $email = $_POST['email'] ?? '';
+    $matric = $_POST['matric'] ?? '';
     $password = $_POST['password'] ?? '';
 
     // =========================================================
-    // 1. SEARCH IN THE ISOLATED ADMIN TABLE (With Debugging)
+    // 1. SEARCH IN USERS TABLE (Students)
     // =========================================================
-    if (str_ends_with(strtolower(trim($email)), '@gmail.com')) {
-        $stmt_admin = $conn->prepare("SELECT * FROM admin WHERE username = ?");
-        $stmt_admin->bind_param("s", $email);
-        $stmt_admin->execute();
-        $admin_result = $stmt_admin->get_result();
-
-        if ($admin_result->num_rows > 0) {
-            $admin = $admin_result->fetch_assoc();
-            $db_admin_pass = $admin['password'] ?? '';
-
-            // debug checkpoint 1: User found, checking password verification
-            if (password_verify($password, $db_admin_pass) || $password === 'admin123') {
-
-                // Automatically fix the hash if it was corrupted or short
-                $new_secure_hash = password_hash('admin123', PASSWORD_BCRYPT);
-                mysqli_query($conn, "UPDATE admin SET password = '$new_secure_hash' WHERE id = 1");
-
-                session_regenerate_id(true);
-
-                $_SESSION['user_id']  = $admin['id'];
-                $_SESSION['username'] = $admin['username'];
-                $_SESSION['name']     = $admin['name'];
-                $_SESSION['role']     = "admin";
-
-                header("Location: admin/admin_profile.php");
-                exit();
-            } else {
-                // If you see this, the email matched but your password string failed validation
-                die("CBT Debug: Admin user found, but password_verify failed.");
-            }
-        }
-    }
-
-    // =========================================================
-    // 2. SEARCH IN USERS TABLE (Students)
-    // =========================================================
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE matric = ?");
+    $stmt->bind_param("s", $matric);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -63,7 +27,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['reg_no'] = $user['reg_no'];
-            $_SESSION['name'] = $user['name'];
+            $_SESSION['NAME'] = $user['NAME'];
 
             if ($user['role'] == "student") {
                 header("Location: student/dashboard.php");
@@ -72,33 +36,6 @@ if (isset($_POST['login'])) {
         }
     }
 
-    // =========================================================
-    // 3. SEARCH IN TEACHERS TABLE (Teachers)
-    // =========================================================
-    $stmt_teacher = $conn->prepare("SELECT * FROM teachers WHERE email = ?");
-    $stmt_teacher->bind_param("s", $email);
-    $stmt_teacher->execute();
-    $teacher_result = $stmt_teacher->get_result();
-
-    if ($teacher_result->num_rows > 0) {
-        $teacher = $teacher_result->fetch_assoc();
-
-        // Teacher column name here too
-        $db_teacher_pass = $teacher['password'] ?? '';
-
-        if (!empty($db_teacher_pass) && password_verify($password, $db_teacher_pass)) {
-            if (($teacher['status'] ?? '') != "approved") {
-                $message = "Your teacher account is still pending contact CITM (Admin)";
-            } else {
-                $_SESSION['teacher_id'] = $teacher['id'];
-                $_SESSION['role'] = "teacher";
-                $_SESSION['name'] = $teacher['name'];
-
-                header("Location: teacher/dashboard.php");
-                exit();
-            }
-        }
-    }
 
     if (empty($message)) {
         $message = "Invalid email or password.";
@@ -159,8 +96,8 @@ if (isset($_POST['login'])) {
 
                         <form method="POST" action="login.php">
                             <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" name="email" class="form-control" placeholder="example@rectem.edu" required>
+                                <label class="form-label">Matric Number</label>
+                                <input type="matric" name="matric" class="form-control" placeholder="R2018/420/001" required>
                             </div>
 
                             <div class="mb-4">
@@ -178,6 +115,9 @@ if (isset($_POST['login'])) {
                             </div>
                             <div class="text-center mt-2">
                                 <a href="index.php" class="small text-muted">← Back to Home</a>
+                            </div>
+                            <div class="text-center mt-2">
+                                <a href="Tlogin.php" class="small text-muted">Login as Teacher</a>
                             </div>
                         </form>
                     </div>

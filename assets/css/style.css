@@ -1,14 +1,15 @@
 
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    overflow-x:hidden;
+    margin: 0;
+    font-family: 'Sora', Arial, sans-serif; 
+    background: #f4f6f9;
+    overflow-x: hidden;
+    font-size: 14.5px;
 }
 
-/* =========================
+/* ================
    SIDEBAR
-========================= */
+===================*/
 .sidebar {
     width: 260px;
     height: 100vh;
@@ -153,44 +154,50 @@ body{
     background:#bb2d3b;
 }
 
-/* =========================
-   TABLES
-========================= */
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
+/* ============
+   TABLES 
+=============== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
 }
 
-table th{
-    background:#f8f9fa;
-    padding:12px;
-    text-align:left;
+table th {
+    background: #1e293b; 
+    color: white;
+    padding: 14px 16px;  
+    text-align: left;
+    font-size: 14px;
 }
 
-table td{
-    padding:12px;
-    border-bottom:1px solid #eee;
+table td {
+    padding: 15px 16px;  
+    border-bottom: 1px solid #efefef;
+    font-size: 14px;
 }
 
-/* =========================
-   FORMS
-========================= */
+/* ============
+   FORMS 
+===============*/
 input,
 select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:6px;
-    outline:none;
-    box-sizing:border-box;
+textarea {
+    width: 100%;
+    padding: 13px 16px;  /* Upgraded from 12px—gives premium height */
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;   /* Rounder, modern profile */
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;      /* Sharp input text size */
+    color: #334155;
 }
 
 input:focus,
 select:focus,
-textarea:focus{
-    border-color:#0d6efd;
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Soft glow */
 }
 
 /* =========================

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $uid = intval($_SESSION['user_id']);
 
 // Refresh student info from DB
-$uq = mysqli_query($conn, "SELECT NAME, email FROM users WHERE id = '$uid'");
+$uq = mysqli_query($conn, "SELECT NAME, matric FROM users WHERE id = '$uid'");
 if ($uq && $row = mysqli_fetch_assoc($uq)) {
     $_SESSION['student_name']   = $row['NAME'];
     $_SESSION['student_reg_no'] = $row['matric'] ?? $row['email'];
@@ -36,7 +36,7 @@ $results = mysqli_query($conn, $results_sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results — CBT Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel=" icon" href="assets/images/launcher_iconn.png" type="image/png">
+    <link rel=" icon" href="../assets/images/launcher_iconn.png" type="image/png">
     <style>
         :root {
             --navy: #0a1628;

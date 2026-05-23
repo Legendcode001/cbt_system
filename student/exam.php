@@ -22,7 +22,7 @@ $student_reg = $_SESSION['student_reg_no']
 // Fallback: re-fetch from DB if session is incomplete
 if (empty($student_name) || empty($student_reg) || $student_name === 'Unknown Student') {
     $uid = intval($_SESSION['user_id']);
-    $uq  = mysqli_query($conn, "SELECT NAME, email FROM users WHERE id = '$uid'");
+    $uq  = mysqli_query($conn, "SELECT NAME, matric FROM users WHERE id = '$uid'");
     if ($uq && $row = mysqli_fetch_assoc($uq)) {
         $student_name = $row['NAME'];
         $student_reg  = $row['matric'] ?? $row['email'];
@@ -106,7 +106,7 @@ if (isset($_POST['submit_exam'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectem CBT Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel=" icon" href="assets/images/launcher_iconn.png" type="image/png">
+    <link rel=" icon" href="../assets/images/launcher_iconn.png" type="image/png">
     <style>
         :root {
             --navy: #0a1628;

@@ -17,7 +17,7 @@ if ($_SESSION['role'] != "student") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display&family=Roboto&display=swap"
         rel="stylesheet">
-    <link rel=" icon" href="assets/images/launcher_iconn.png" type="image/png">
+    <link rel=" icon" href="../assets/images/launcher_iconn.png" type="image/png">
 
     <style>
         body {
@@ -60,6 +60,30 @@ if ($_SESSION['role'] != "student") {
             border-radius: 12px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .rounded-4 {
+            border-radius: 16px !important;
+        }
+
+        .px-2\.5 {
+            padding-left: 0.65rem !important;
+            padding-right: 0.65rem !important;
+        }
+
+        .py-1\.5 {
+            padding-top: 0.4rem !important;
+            padding-bottom: 0.4rem !important;
+        }
+
+        .dashboard-welcome-card {
+            border-left: 5px solid #0d6efd !important;
+            /* Matches your core Bootstrap primary brand color */
+            transition: transform 0.2s ease;
+        }
+
+        .dashboard-welcome-card:hover {
+            transform: translateY(-2px);
+        }
     </style>
 
 </head>
@@ -90,14 +114,55 @@ if ($_SESSION['role'] != "student") {
 
     <div class="content">
 
-        <h3>
+        <!-- 1. GREETING COMPONENT CONTAINER -->
+        <div class="p-4 mb-4 bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden dashboard-welcome-card">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <!-- Dynamic Time-of-Day Greeting Prefix -->
+                    <span class="text-uppercase tracking-wider text-primary fw-bold" style="font-size: 11px; letter-spacing: 1px;">
+                        <?php
+                        date_default_timezone_set('Africa/Lagos'); // Keeps time synced with your environment
+                        $hour = date('H');
+                        if ($hour < 12) {
+                            echo "🌅 Good Morning";
+                        } elseif ($hour < 16) {
+                            echo "☀️ Good Afternoon";
+                        } else {
+                            echo "🌙 Good Evening";
+                        }
+                        ?>
+                    </span>
 
-            Welcome,
-            <?php echo $_SESSION['name']; ?>
+                    <!-- Formatted Student Full Name Display -->
+                    <h2 class="mt-1 mb-2 fw-bold text-dark" style="font-family: 'Sora', 'Segoe UI', sans-serif;">
+                        <?php
+                        if (!empty($_SESSION['student_name'])) {
+                            echo ucwords(strtolower($_SESSION['student_name']));
+                        } else {
+                            echo "Student Portal";
+                        }
+                        ?>
+                    </h2>
 
-        </h3>
+                    <!-- Student Metadata Row -->
+                    <div class="d-flex flex-wrap gap-2 align-items-center mt-2 text-muted" style="font-size: 13px;">
+                        <span class="badge bg-light text-secondary border px-2.5 py-1.5 rounded-3 fw-medium">
+                            🆔 <?php echo $_SESSION['student_reg_no'] ?? 'No Matric Key Found'; ?>
+                        </span>
+                        <span class="mx-1">•</span>
+                        <span>Active Examination Session</span>
+                    </div>
+                </div>
 
-        <hr>
+                <!-- Quick Access Metric Right-Side (Optional visual anchor) -->
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-success bg-opacity-10 text-success rounded-pill" style="font-size: 12px; font-weight: 600;">
+                        <span class="d-inline-block bg-success rounded-circle" style="width: 8px; height: 8px;"></span>
+                        Portal Connection Verified
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <div class="row mt-4">
