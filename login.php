@@ -88,7 +88,7 @@ if (isset($_POST['login'])) {
 
         if (!empty($db_teacher_pass) && password_verify($password, $db_teacher_pass)) {
             if (($teacher['status'] ?? '') != "approved") {
-                $message = "Your teacher account is pending admin approval.";
+                $message = "Your teacher account is still pending contact CITM (Admin)";
             } else {
                 $_SESSION['teacher_id'] = $teacher['id'];
                 $_SESSION['role'] = "teacher";

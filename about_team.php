@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us — CBT Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/launcher_iconn.png" type="images/png">
     <style>
         :root {
             --navy: #0a1628;
@@ -707,7 +708,7 @@
                 <div>
                     <div class="project-title">RECTEM CBT Portal</div>
                     <p class="project-sub">
-                        A full-featured Computer Based Testing system developed as a final year academic project.
+                        A full-featured Computer Based Testing system developed as a mandatory skill project.
                         Students can register, log in with their matric number, take timed exams, and instantly view their
                         results with grades. Teachers manage courses, upload questions, and configure exam durations —
                         all through clean, purpose-built dashboards.
