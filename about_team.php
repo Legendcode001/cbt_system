@@ -619,7 +619,7 @@
                 <div class="member-name">Adeshina</div>
                 <div class="member-role-title">System Administrator</div>
                 <p class="member-desc">
-                    Responsible for the day-to-day management of the portal. Oluwashina handles user accounts, course setup, data entry, and ensures the platform runs smoothly for both students and teachers.
+                    Responsible for the day-to-day management of the portal. Adeshina handles user accounts, course setup, data entry, and ensures the platform runs smoothly for both students and teachers.
                 </p>
                 <div class="skills">
                     <span class="skill">User Management</span>
@@ -728,7 +728,7 @@
         <div class="footer-band">
             <p>
                 Developed with 💛 and teamwork &nbsp;·&nbsp; <span>RECTEM CBT Portal &copy; <?php echo date("Y"); ?></span><br>
-                Group Lead &amp; Developer: <span>Adejumo Abraham Opeoluwa</span> &nbsp;·&nbsp; Mandatory Skill Project
+                Group Lead &amp; Developer: <span>Abraham Opeoluwa ADEJUMO</span> &nbsp;·&nbsp; Mandatory Skill Project
             </p>
         </div>
 
