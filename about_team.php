@@ -594,7 +594,7 @@
                     <div class="avatar avatar-dev">AO</div>
                     <div class="star-badge">⭐</div>
                 </div>
-                <div class="member-name">Adejumo Abraham Opeoluwa</div>
+                <div class="member-name">Abraham Opeoluwa ADEJUMO</div>
                 <div class="member-role-title">Team Lead &amp; Software Developer</div>
                 <p class="member-desc">
                     The architect behind the entire CBT portal. Abraham led the team, designed the database, built every module from login to exam submission, and ensured the system was deployed and working end-to-end.
@@ -613,10 +613,10 @@
             <div class="member-card card-admin">
                 <span class="role-tag tag-admin">Administrator</span>
                 <div class="avatar-wrap">
-                    <img src="assets/images/oluwashina.jpg" alt="Oluwashina" onerror="this.style.opacity='0';">
-                    <div class="avatar avatar-admin">OL</div>
+                    <img src="assets/images/oluwashina.jpg" alt="Adeshina" onerror="this.style.opacity='0';">
+                    <div class="avatar avatar-admin">AS</div>
                 </div>
-                <div class="member-name">Oluwashina</div>
+                <div class="member-name">Adeshina</div>
                 <div class="member-role-title">System Administrator</div>
                 <p class="member-desc">
                     Responsible for the day-to-day management of the portal. Oluwashina handles user accounts, course setup, data entry, and ensures the platform runs smoothly for both students and teachers.
@@ -638,7 +638,7 @@
             <div class="member-card card-analyst">
                 <span class="role-tag tag-analyst">System Analyst</span>
                 <div class="avatar-wrap">
-                    <img src="assets/images/demilade.jpg" alt="Akinlade Demilade" onerror="this.style.opacity='0';">
+                    <img src="assets/images/demi.JPG" alt="Akinlade Demilade" onerror="this.style.opacity='0';">
                     <div class="avatar avatar-analyst">AD</div>
                 </div>
                 <div class="member-name">Akinlade Demilade</div>
