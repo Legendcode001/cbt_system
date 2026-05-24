@@ -32,12 +32,12 @@ if (isset($_POST['save_question'])) {
                 VALUES ('$course_id', '$question', '$optA', '$optB', '$optC', '$optD', '$correct')";
 
         if (mysqli_query($conn, $sql)) {
-            $status_msg = "<div class='alert alert-success shadow-sm p-3' style='font-size: 14px;'><strong>Success!</strong> Question has been added to your bank.</div>";
+            $status_msg = "<div class='alert alert-success border-0 shadow-sm p-3 mb-3' style='font-size: 14px; border-radius: 8px;'><strong>Success!</strong> Question has been added to your bank. ✅</div>";
         } else {
-            $status_msg = "<div class='alert alert-danger shadow-sm p-3' style='font-size: 14px;'><strong>Database Error:</strong> " . mysqli_error($conn) . "</div>";
+            $status_msg = "<div class='alert alert-danger border-0 shadow-sm p-3 mb-3' style='font-size: 14px; border-radius: 8px;'><strong>Database Error:</strong> " . mysqli_error($conn) . "</div>";
         }
     } else {
-        $status_msg = "<div class='alert alert-danger shadow-sm p-3' style='font-size: 14px;'><strong>Authorization Error:</strong> Invalid course target configuration.</div>";
+        $status_msg = "<div class='alert alert-danger border-0 shadow-sm p-3 mb-3' style='font-size: 14px; border-radius: 8px;'><strong>Authorization Error:</strong> Invalid course target configuration.</div>";
     }
 }
 ?>
@@ -55,66 +55,21 @@ if (isset($_POST['save_question'])) {
     <link rel="icon" href="../assets/images/launcher_iconn.png" type="image/png">
 
     <style>
-        body {
-            font-family: 'Sora', sans-serif;
-            background: #f8fafc;
-            font-size: 14px;
-            color: #1e293b;
-        }
-
-        .main-content {
-            margin-top: 75px;
-            margin-left: 260px;
-            padding: 35px;
-            min-height: calc(100vh - 75px);
-        }
-
         .page-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #0f172a;
             letter-spacing: -0.5px;
         }
 
         .page-subtitle {
-            font-size: 14px;
+            font-size: 13.5px;
             color: #64748b;
             margin-top: 2px;
         }
 
-        .card {
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-            background: #ffffff;
-            padding: 30px !important;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: #334155;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .form-control,
-        .form-select {
-            padding: 11px 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #334155;
-            transition: all 0.2s;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
         .btn-submit {
-            background: #1e293b;
+            background: #0284c7;
             color: #ffffff;
             padding: 12px 24px;
             border-radius: 8px;
@@ -125,37 +80,29 @@ if (isset($_POST['save_question'])) {
         }
 
         .btn-submit:hover {
-            background: #0f172a;
-        }
-
-        @media (max-width: 992px) {
-            .main-content {
-                margin-left: 0;
-                padding: 20px;
-                margin-top: 70px;
-            }
-
-            .card {
-                padding: 20px !important;
-            }
+            background: #0369a1;
         }
     </style>
 </head>
 
 <body>
+
     <?php include("../includes/teacher_sidebar.php"); ?>
+
     <div class="main-content">
-        <div class="mb-4">
+        <div class="mb-4 pt-2">
             <h2 class="page-title">Add New Question</h2>
             <p class="page-subtitle">Append structured multiple-choice questions to your assigned curriculums</p>
         </div>
+        
         <div class="row">
             <div class="col-xl-10">
                 <?php echo $status_msg; ?>
-                <div class="card">
+                <div class="card border-0 shadow-sm p-4">
                     <form action="add_question.php" method="POST">
+                        
                         <div class="mb-3">
-                            <label class="form-label">Target Course Scope</label>
+                            <label class="form-label fw-bold text-dark mb-2" style="font-size: 13.5px;">Target Course Scope</label>
                             <select name="course_id" class="form-select" required>
                                 <option value="">-- Select Registered Course --</option>
                                 <?php
@@ -166,35 +113,52 @@ if (isset($_POST['save_question'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Question Specification</label>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-dark mb-2" style="font-size: 13.5px;">Question Specification</label>
                             <textarea name="question" class="form-control" rows="4" placeholder="Type the examination query context here..." required></textarea>
                         </div>
-                        <h5 class="fw-bold text-dark mt-4 mb-2" style="font-size: 14px;">Option Vectors</h5>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6"><label class="form-label text-muted small">Option A</label><input type="text" name="optA" class="form-control" required></div>
-                            <div class="col-md-6"><label class="form-label text-muted small">Option B</label><input type="text" name="optB" class="form-control" required></div>
-                            <div class="col-md-6"><label class="form-label text-muted small">Option C</label><input type="text" name="optC" class="form-control" required></div>
-                            <div class="col-md-6"><label class="form-label text-muted small">Option D</label><input type="text" name="optD" class="form-control" required></div>
+                        
+                        <h5 class="fw-bold text-dark mb-3" style="font-size: 14px;"><i class="fas fa-list-ol me-1 text-secondary"></i> Option Vectors</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-semibold mb-1">Option A</label>
+                                <input type="text" name="optA" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-semibold mb-1">Option B</label>
+                                <input type="text" name="optB" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-semibold mb-1">Option C</label>
+                                <input type="text" name="optC" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-semibold mb-1">Option D</label>
+                                <input type="text" name="optD" class="form-control" required>
+                            </div>
                         </div>
+                        
                         <hr class="my-4" style="border-color: #e2e8f0;">
+                        
                         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
-                            <div style="width: 100%; max-width: 240px;">
-                                <label class="form-label text-success mb-1"><i class="fas fa-check-circle me-1"></i> Solution Key</label>
-                                <select name="correct" class="form-select border-success-subtle text-success fw-bold">
+                            <div style="width: 100%; max-width: 260px;">
+                                <label class="form-label text-success mb-2 fw-bold" style="font-size: 13.5px;"><i class="fas fa-check-circle me-1"></i> Solution Key</label>
+                                <select name="correct" class="form-select border-success-subtle text-success fw-bold" style="background-color: #f0fdf4;">
                                     <option value="A">Option A</option>
                                     <option value="B">Option B</option>
                                     <option value="C">Option C</option>
                                     <option value="D">Option D</option>
                                 </select>
                             </div>
-                            <button type="submit" name="save_question" class="btn-submit px-4 mt-sm-3"><i class="fas fa-plus-circle me-2"></i> Deploy Question</button>
+                            <button type="submit" name="save_question" class="btn-submit px-4"><i class="fas fa-paper-plane me-2"></i> Deploy Question</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
